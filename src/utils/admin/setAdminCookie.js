@@ -1,0 +1,9 @@
+export const setAdminCookie = (res, token) => {
+  res.cookie("admin_token", token, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+    path: "/",
+    maxAge: 24 * 60 * 60 * 1000,
+  });
+};
